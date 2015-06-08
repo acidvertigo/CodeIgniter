@@ -398,7 +398,8 @@ class CI_Calendar {
 		}
 
 		$days = array();
-		for ($i = 0, $c = count($day_names); $i < $c; $i++)
+		$c = count($day_names);
+		for ($i = 0; $i < $c; $i++)
 		{
 			$days[] = ($this->CI->lang->line('cal_'.$day_names[$i]) === FALSE) ? ucfirst($day_names[$i]) : $this->CI->lang->line('cal_'.$day_names[$i]);
 		}
