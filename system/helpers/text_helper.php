@@ -204,7 +204,8 @@ if ( ! function_exists('entities_to_ascii'))
 	{
 		if (preg_match_all('/\&#(\d+)\;/', $str, $matches))
 		{
-			for ($i = 0, $s = count($matches[0]); $i < $s; $i++)
+			$s = count($matches[0]);
+			for ($i = 0; $i < $s; $i++)
 			{
 				$digits = $matches[1][$i];
 				$out = '';
@@ -443,7 +444,8 @@ if ( ! function_exists('word_wrap'))
 		$unwrap = array();
 		if (preg_match_all('|\{unwrap\}(.+?)\{/unwrap\}|s', $str, $matches))
 		{
-			for ($i = 0, $c = count($matches[0]); $i < $c; $i++)
+			$c = count($matches[0]);
+			for ($i = 0; $i < $c; $i++)
 			{
 				$unwrap[] = $matches[1][$i];
 				$str = str_replace($matches[0][$i], '{{unwrapped'.$i.'}}', $str);
