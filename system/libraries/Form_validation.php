@@ -225,7 +225,8 @@ class CI_Form_validation {
 		{
 			sscanf($field, '%[^[][', $indexes[0]);
 
-			for ($i = 0, $c = count($matches[0]); $i < $c; $i++)
+			$c = count($matches[0]);
+			for ($i = 0; $i < $c; $i++)
 			{
 				if ($matches[1][$i] !== '')
 				{
