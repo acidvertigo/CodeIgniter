@@ -785,7 +785,8 @@ class CI_Email {
 			$this->multipart = 'related'; // Thunderbird need this for inline images
 		}
 
-		for ($i = 0, $c = count($this->_attachments); $i < $c; $i++)
+		$c = count($this->_attachments);
+		for ($i = 0; $i < $c; $i++)
 		{
 			if ($this->_attachments[$i]['name'][0] === $filename)
 			{
@@ -1191,7 +1192,8 @@ class CI_Email {
 		$unwrap = array();
 		if (preg_match_all('|\{unwrap\}(.+?)\{/unwrap\}|s', $str, $matches))
 		{
-			for ($i = 0, $c = count($matches[0]); $i < $c; $i++)
+			$c = count($matches[0]);
+			for ($i = 0; $i < $c; $i++)
 			{
 				$unwrap[] = $matches[1][$i];
 				$str = str_replace($matches[0][$i], '{{unwrapped'.$i.'}}', $str);
@@ -1595,7 +1597,8 @@ class CI_Email {
 		isset($chars) OR $chars = strlen($str);
 
 		$output = '=?'.$this->charset.'?Q?';
-		for ($i = 0, $length = strlen($output); $i < $chars; $i++)
+		$length = strlen($output);
+		for ($i = 0; $i < $chars; $i++)
 		{
 			$chr = ($this->charset === 'UTF-8' && ICONV_ENABLED === TRUE)
 				? '='.implode('=', str_split(strtoupper(bin2hex(iconv_substr($str, $i, 1, $this->charset))), 2))
@@ -1691,7 +1694,8 @@ class CI_Email {
 		$set = '';
 		$chunk = array();
 
-		for ($i = 0, $c = count($this->_bcc_array); $i < $c; $i++)
+		$c = count($this->_bcc_array);
+		for ($i = 0; $i < $c; $i++)
 		{
 			if (isset($this->_bcc_array[$i]))
 			{
@@ -1711,7 +1715,8 @@ class CI_Email {
 			}
 		}
 
-		for ($i = 0, $c = count($chunk); $i < $c; $i++)
+		$c = count($chunk);
+		for ($i = 0; $i < $c; $i++)
 		{
 			unset($this->_headers['Bcc']);
 
@@ -2126,7 +2131,8 @@ class CI_Email {
 	protected function _send_data($data)
 	{
 		$data .= $this->newline;
-		for ($written = 0, $length = strlen($data); $written < $length; $written += $result)
+		$length = strlen($data);
+		for ($written = 0; $written < $length; $written += $result)
 		{
 			if (($result = fwrite($this->_smtp_connect, substr($data, $written))) === FALSE)
 			{
