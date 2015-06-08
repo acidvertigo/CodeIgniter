@@ -369,7 +369,8 @@ class CI_Session {
 	{
 		if (is_array($key))
 		{
-			for ($i = 0, $c = count($key); $i < $c; $i++)
+			$c = count($key);
+			for ($i = 0; $i < $c; $i++)
 			{
 				if ( ! isset($_SESSION[$key[$i]]))
 				{
