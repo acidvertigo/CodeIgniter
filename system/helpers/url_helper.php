@@ -288,7 +288,8 @@ if ( ! function_exists('safe_mailto'))
 
 		$x = str_split('<a href="mailto:', 1);
 
-		for ($i = 0, $l = strlen($email); $i < $l; $i++)
+		$l = strlen($email); 
+		for ($i = 0; $i < $l; $i++)
 		{
 			$x[] = '|'.ord($email[$i]);
 		}
@@ -302,7 +303,8 @@ if ( ! function_exists('safe_mailto'))
 				foreach ($attributes as $key => $val)
 				{
 					$x[] = ' '.$key.'="';
-					for ($i = 0, $l = strlen($val); $i < $l; $i++)
+					$l = strlen($val);
+					for ($i = 0; $i < $l; $i++)
 					{
 						$x[] = '|'.ord($val[$i]);
 					}
@@ -311,7 +313,8 @@ if ( ! function_exists('safe_mailto'))
 			}
 			else
 			{
-				for ($i = 0, $l = strlen($attributes); $i < $l; $i++)
+				$l = strlen($attributes);
+				for ($i = 0; $i < $l; $i++)
 				{
 					$x[] = $attributes[$i];
 				}
@@ -321,7 +324,8 @@ if ( ! function_exists('safe_mailto'))
 		$x[] = '>';
 
 		$temp = array();
-		for ($i = 0, $l = strlen($title); $i < $l; $i++)
+		$l = strlen($title);
+		for ($i = 0; $i < $l; $i++)
 		{
 			$ordinal = ord($title[$i]);
 
@@ -357,7 +361,8 @@ if ( ! function_exists('safe_mailto'))
 			."\t//<![CDATA[\n"
 			."\tvar l=new Array();\n";
 
-		for ($i = 0, $c = count($x); $i < $c; $i++)
+		$c = count($x);
+		for ($i = 0; $i < $c; $i++)
 		{
 			$output .= "\tl[".$i."] = '".$x[$i]."';\n";
 		}
